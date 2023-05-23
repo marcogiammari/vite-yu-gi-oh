@@ -20,7 +20,7 @@
       retrieveData() {
        
         axios.get(this.store.urlAPI).then(r => {
-          this.store.cards.push(r.data.data);
+          this.store.cards = r.data.data;
           this.store.loading = false;
         })
         .catch(error => {
