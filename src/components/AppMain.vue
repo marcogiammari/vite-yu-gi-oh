@@ -32,13 +32,13 @@ import { store } from '../data/store.js';
             <div class="container bg-white p-5">
                 <div class="container-fluid">
                     <div v-if="this.store.cards.length" class="row bg-dark text-light p-4 fw-bold">
-                        Found {{ this.store.cards[0].length}} cards
+                        Found {{ this.store.cards.length}} cards
                     </div>
                     <div v-show="this.store.loading" id="loader">
-                        <img src="../assets/img/Spin-1s-200px.gif" alt="">
+                        <img src="../assets/img/Spin-1s-200px.gif" alt="loader">
                     </div>
                     <div v-show="!this.store.loading" id="cards-container" class="row">
-                        <div v-for="card in this.store.cards[0]" class="card-wrapper card p-0">
+                        <div v-for="card in this.store.cards" class="card-wrapper card p-0">
                             <img class="img-fluid" :src="getImagePath(`${card.card_images[0].image_url}`)" :alt="card.name">
                             <p class="text-light text-center fw-bold">{{ card.name.toUpperCase() }}</p>
                             <p>{{ card.archetype }}</p>
