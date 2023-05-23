@@ -1,6 +1,5 @@
 <script>
-  import { onMounted } from 'vue';
-import AppHeader from './components/AppHeader.vue';
+  import AppHeader from './components/AppHeader.vue';
   import AppMain from './components/AppMain.vue';
   import { store } from './data/store'
   import axios from 'axios';
@@ -18,23 +17,22 @@ import AppHeader from './components/AppHeader.vue';
     
     },
     methods: {
-      retrieveData(num) {
-        for (let i = 0; i < num; i++) {
-          axios.get(this.store.urlAPI).then(r => {
-            console.log('Ricevuto: ', r.data.data[i]);
-            console.log('Path: ', r.data.data[i].card_images[0].image_url);
-            this.store.cards.push(r.data.data[i]);
-            console.log(this.store.cards);
-            this.store.loading = false;
-          }).catch(error => {
-            this.store.cards = [];
-            this.store.loading = false;
-          })        
-        }
+      retrieveData() {
+       
+        axios.get(this.store.urlAPI).then(r => {
+          this.store.cards.push(r.data.data);
+          this.store.loading = false;
+          this.store.cards.num = (this.store.cards[0].length)
+        })
+        .catch(error => {
+          console.log('Error: ', error);
+          this.store.loading = false;
+          this.store.cards = [];
+        })
       }
     },
     mounted() {
-      this.retrieveData(15)
+      this.retrieveData()
     }
 }
 </script>
