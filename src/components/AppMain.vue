@@ -31,8 +31,8 @@ import { store } from '../data/store.js';
             </div> -->
             <div class="container bg-white p-5">
                 <div class="container-fluid">
-                    <div class="row bg-dark text-light p-4 fw-bold">
-                        Found {{ this.store.cards.num }} cards
+                    <div v-if="this.store.cards.length" class="row bg-dark text-light p-4 fw-bold">
+                        Found {{ this.store.cards[0].length}} cards
                     </div>
                     <div v-show="this.store.loading" id="loader">
                         <img src="../assets/img/Spin-1s-200px.gif" alt="">

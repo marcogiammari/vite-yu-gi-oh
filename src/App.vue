@@ -22,7 +22,6 @@
         axios.get(this.store.urlAPI).then(r => {
           this.store.cards.push(r.data.data);
           this.store.loading = false;
-          this.store.cards.num = (this.store.cards[0].length)
         })
         .catch(error => {
           console.log('Error: ', error);
