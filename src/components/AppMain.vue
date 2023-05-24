@@ -1,12 +1,18 @@
 <script>
 
 import { store } from '../data/store.js';
+import AppSelect from './AppSelect.vue';
+import AppCardsNumber from './AppCardsNumber.vue';
 
     export default {
         name: 'AppMain',
+        components: {
+            AppSelect,
+            AppCardsNumber
+        },
         data() {
             return {
-                store: store
+                store: store,
             }
         }
     }
@@ -19,16 +25,10 @@ import { store } from '../data/store.js';
 
     <main class="p-5">
         <div class="container d-flex flex-column gap-4">
-            <!-- <div class="col-2">
-                <select class="form-select p-2" name="" id="">
-                    <option value="">Alien</option>
-                </select>
-            </div> -->
+            <AppSelect />
             <div class="container bg-white p-5">
                 <div class="container-fluid">
-                    <div v-if="this.store.cards.length" class="row bg-dark text-light p-4 fw-bold">
-                        Found {{ this.store.cards.length}} cards
-                    </div>
+                    <AppCardsNumber />
                     <div v-show="this.store.loading" id="loader">
                         <img src="../assets/img/Spin-1s-200px.gif" alt="loader">
                     </div>

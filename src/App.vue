@@ -24,14 +24,21 @@
           this.store.loading = false;
         })
         .catch(error => {
-          console.log('Error: ', error);
+          console.error('Error: ', error);
           this.store.loading = false;
           this.store.cards = [];
         })
+      },
+      retrieveArchetypes() {
+        axios.get(this.store.urlArchetypesAPI).then(r => {
+          this.store.archetypes = r.data;
+        })
       }
+      
     },
     mounted() {
-      this.retrieveData()
+      this.retrieveArchetypes()
+      this.retrieveData(this.store.selectedArchetype)
     }
 }
 </script>
