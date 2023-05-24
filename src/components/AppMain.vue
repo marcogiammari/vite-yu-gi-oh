@@ -8,11 +8,6 @@ import { store } from '../data/store.js';
             return {
                 store: store
             }
-        },
-        methods: {
-            getImagePath(imgPath) {
-            return new URL(imgPath, import.meta.url).href;
-            }
         }
     }
 
@@ -39,7 +34,7 @@ import { store } from '../data/store.js';
                     </div>
                     <div v-show="!this.store.loading" id="cards-container" class="row">
                         <div v-for="card in this.store.cards" class="card-wrapper card p-0">
-                            <img class="img-fluid" :src="getImagePath(`${card.card_images[0].image_url}`)" :alt="card.name">
+                            <img class="img-fluid" :src="card.card_images[0].image_url" :alt="card.name">
                             <p class="text-light text-center fw-bold">{{ card.name.toUpperCase() }}</p>
                             <p>{{ card.archetype }}</p>
                         </div>
